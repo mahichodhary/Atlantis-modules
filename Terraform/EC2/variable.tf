@@ -15,7 +15,7 @@ variable instance_ami {
     type = string
 
     description = "Server image to use"
-
+    default = "ami-005e54dee72cc1d1234"
 }
 
  
