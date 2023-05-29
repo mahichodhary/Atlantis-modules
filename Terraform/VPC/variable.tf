@@ -2,7 +2,7 @@ variable "vpc_cidr" {
   description = "cidr for vpc"
   type        = string
   default     = "10.0.0.0/16"
-}
+}#
 
 variable "sub_vpc_id" {
   description = "vpc id for public subnet 1"
