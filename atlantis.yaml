@@ -59,21 +59,20 @@ workflows:
         - init
         - state_rm:
             extra_args: ["-lock=false"]
- 
-    Restrict:
-      plan:
-        steps:
-        - check_directory:
-            path: Terraform/EC2
-            allow_plan: false
-        - init
-        - plan:
-            extra_args: ["-var-file", "dev-terrafrom.tfvars"]
-      apply:
-        steps:
-        - check_directory:
-            path: Terraform/EC2
-            allow_apply: false
-        - apply:
-            extra_args: ["-var-file", "dev-terrafrom.tfvars"] 
+  Restrict:
+     plan:
+       steps:
+       - check_directory:
+           path: Terraform/EC2
+           allow_plan: false
+       - init
+       - plan:
+           extra_args: ["-var-file", "dev-terrafrom.tfvars"]
+     apply:
+       steps:
+       - check_directory:
+           path: Terraform/EC2
+           allow_apply: false
+       - apply:
+           extra_args: ["-var-file", "dev-terrafrom.tfvars"] 
    
