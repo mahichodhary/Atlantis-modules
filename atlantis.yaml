@@ -1,15 +1,15 @@
 version: 3
 projects:
-- dir: Terraform/EC2
+- dir: Terraform/VPC
   autoplan:
-    when_modified: [ "../EC2/**/*.tf","*.tf*"]
+    when_modified: [ "../VPC/**/*.tf","*.tf*"]
 # If two or more projects have the same dir and workspace, they must also have
 # a 'name' key to differentiate them.
 - name: project1-development
-  dir: Terraform/EC2
+  dir: Terraform/VPC
   workflow: development
 - name: project1-production
-  dir: Terraform/EC2
+  dir: Terraform/VPC
   workflow: production
 
 workflows:
