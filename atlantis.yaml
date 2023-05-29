@@ -11,26 +11,8 @@ projects:
 - name: project1-production
   dir: Terraform/VPC
   workflow: production
-- name: project1-restriction
-  dir: Terraform/EC2
-  workflow: default1
+
 workflows:
-  default1:
-    plan:
-      steps:
-      - check_directory:
-          path: /path/to/restricted_directory
-          allow_plan: false
-      - init
-      - plan:
-          extra_args: ["-var-file", "dev-terraform.tfvars"]
-    apply:
-      steps:
-      - check_directory:
-          path: /path/to/restricted_directory
-          allow_apply: false
-      - apply:
-          extra_args: ["-var-file", "dev-terraform.tfvars"]
   development:
     plan:
       steps:
