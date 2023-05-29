@@ -14,8 +14,23 @@ projects:
 - name: project1-restriction
   dir: Terraform/EC2
   workflow: default1
-
 workflows:
+  default1:
+    plan:
+      steps:
+      - check_directory:
+          path: /path/to/restricted_directory
+          allow_plan: false
+      - init
+      - plan:
+          extra_args: ["-var-file", "dev-terraform.tfvars"]
+    apply:
+      steps:
+      - check_directory:
+          path: /path/to/restricted_directory
+          allow_apply: false
+      - apply:
+          extra_args: ["-var-file", "dev-terraform.tfvars"]
   development:
     plan:
       steps:
@@ -38,8 +53,6 @@ workflows:
         - init
         - state_rm:
             extra_args: ["-lock=false"]   
-
-  
   production:
     plan:
       steps:
@@ -59,20 +72,3 @@ workflows:
         - init
         - state_rm:
             extra_args: ["-lock=false"]
-    
-    default1:
-      plan:
-        steps:
-        - check_directory:
-            path: Terraform/EC2
-            allow_plan: false
-        - init
-        - plan:
-            extra_args: ["-var-file", "dev-terrafrom.tfvars"]
-      apply:
-        steps:
-        - check_directory:
-            path: Terraform/EC2
-            allow_apply: false
-        - apply:
-            extra_args: ["-var-file", "dev-terrafrom.tfvars"]
