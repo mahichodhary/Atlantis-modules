@@ -1,15 +1,15 @@
 version: 3
 projects:
-- dir: Terraform/VPC
+- dir: Terraform/EC2
   autoplan:
-    when_modified: [ "../VPC/**/*.tf","*.tf*"]
+    when_modified: [ "../EC2/**/*.tf","*.tf*"]
 # If two or more projects have the same dir and workspace, they must also have
 # a 'name' key to differentiate them.
 - name: project1-development
-  dir: Terraform/VPC
+  dir: Terraform/EC2
   workflow: development
 - name: project1-production
-  dir: Terraform/VPC
+  dir: Terraform/EC2
   workflow: production
 
 workflows:
@@ -18,7 +18,7 @@ workflows:
       steps:
       - init
       - plan:
-          extra_args: ["-var-file", "dev-terraform.tfvars"]
+          extra_args: ["-var-file", "dev-terrafrom.tfvars"]
     # NOTE: no need to define the apply stage because it will default
     # to the normal apply stage.
     #apply:
