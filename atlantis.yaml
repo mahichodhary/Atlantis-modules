@@ -18,7 +18,7 @@ workflows:
       steps:
       - init
       - plan:
-          extra_args: ["-var-file", "dev-terrafrom.tfvars"]
+          extra_args: ["-var-file", "dev-terraform.tfvars"]
     # NOTE: no need to define the apply stage because it will default
     # to the normal apply stage.
     #apply:
