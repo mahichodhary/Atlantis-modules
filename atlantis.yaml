@@ -5,20 +5,20 @@ projects:
     when_modified: [ "../VPC/**/*.tf","*.tf*"]
 # If two or more projects have the same dir and workspace, they must also have
 # a 'name' key to differentiate them.
-- name: project1-development
+- name: project-development
   dir: Terraform/VPC
-  workflow: development
-- name: project1-production
+  workflow: development1
+- name: project-production
   dir: Terraform/VPC
-  workflow: production
+  workflow: production1
 
 workflows:
-  development:
+  development1:
     plan:
       steps:
       - init
       - plan:
-          extra_args: ["-var-file", "dev-terraform.tfvars"]
+          extra_args: ["-var-file", "development-terraform.tfvars"]
     # NOTE: no need to define the apply stage because it will default
     # to the normal apply stage.
     #apply:
@@ -35,12 +35,12 @@ workflows:
         - init
         - state_rm:
             extra_args: ["-lock=false"]   
-  production:
+  production1:
     plan:
       steps:
       - init
       - plan:
-          extra_args: ["-var-file", "prod-terraform.tfvars"]
+          extra_args: ["-var-file", "production-terraform.tfvars"]
    # apply:
     #   - apply:
      #       extra_args: ["-var-file", "prod-terraform.tfvars"]
