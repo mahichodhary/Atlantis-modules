@@ -1,4 +1,4 @@
-module "vpc" {
+module "vpc7" {
   source   = "../Module/vpc"
   vpc_cidr = var.vpc_cidr
   # sub_vpc_id=var.sub_vpc_id
